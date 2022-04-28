@@ -1,8 +1,18 @@
-const sum = (p1, p2) => {
-    console.log(p1)
-    console.log(p2)
-    return p1 + p2
+const me = {
+    name: 'Paulo',
+    age: 23,
+    education: 'MEng',
+    greet: function() {
+        console.log('Hello, my name is ' + this.name + ' and I am ' + this.age + ' years old.')
+    },
+    doAddition: function(a, b) {
+        console.log(a+b)
+    }
 }
 
-const result = sum(1,5)
-console.log(result)
+
+me.greet()
+
+const refToGreet = me.greet
+
+refToGreet()
