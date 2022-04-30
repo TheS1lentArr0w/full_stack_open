@@ -1,18 +1,15 @@
-const me = {
-    name: 'Paulo',
-    age: 23,
-    education: 'MEng',
-    greet: function() {
-        console.log('Hello, my name is ' + this.name + ' and I am ' + this.age + ' years old.')
-    },
-    doAddition: function(a, b) {
-        console.log(a+b)
+class Person {
+    constructor(name, age) {
+        this.name = name
+        this.age = age
+    }
+    greet() {
+        console.log('hello, my name is ' + this.name)
     }
 }
 
+const adam = new Person('Adam', 27)
+adam.greet()
 
-me.greet()
-
-const refToGreet = me.greet
-
-refToGreet()
+const paulo = new Person ('Paulo', 23)
+paulo.greet()
