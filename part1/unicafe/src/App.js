@@ -38,12 +38,20 @@ const Button = (props) => (
 )
 
 const Display_Results = (props) => {
+  const total = props.good + props.neutral + props.bad
+  const sum = props.good - props.bad
+  const avg = sum / total
+  const pos_percent = 100 * props.good / total
+
   return (
     <>
       <h1>Statistics</h1>
       <div>Good: {props.good}</div>
       <div>Neutral: {props.neutral}</div>
       <div>Bad: {props.bad}</div>
+      <div>Total Feedback: {total}</div>
+      <div>Average: {avg}</div>
+      <div>Positive Percentage: {pos_percent}%</div>
     </>
   )
 }
