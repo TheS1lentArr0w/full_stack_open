@@ -54,14 +54,16 @@ const Statistics = (props) => {
   return (
     <>
       <h1>Statistics</h1>
-      <div>Good: {props.good}</div>
-      <div>Neutral: {props.neutral}</div>
-      <div>Bad: {props.bad}</div>
+      <StatisticLine text="Good" value={props.good} />
+      <StatisticLine text="Neutral" value={props.neutral} />
+      <StatisticLine text="Bad" value={props.bad} />
       <div>Total Feedback: {total}</div>
       <div>Average: {avg}</div>
       <div>Positive Percentage: {pos_percent}%</div>
     </>
   )
 }
+
+const StatisticLine = (props) => <div>{props.text}: {props.value}</div>
 
 export default App
