@@ -64,6 +64,17 @@ const Statistics = (props) => {
   )
 }
 
-const StatisticLine = (props) => <div>{props.text}: {props.value}</div>
+const StatisticLine = (props) => {
+  return (
+    <table>
+      <tr>
+        <td>{props.text}:</td>
+        <td>{props.value}</td>
+      </tr>
+    </table>
+    // {props.text}: {props.value}
+  )
+}
+
 
 export default App
