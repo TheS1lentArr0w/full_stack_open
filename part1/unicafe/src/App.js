@@ -43,6 +43,14 @@ const Statistics = (props) => {
   const avg = sum / total
   const pos_percent = 100 * props.good / total
 
+  // Display when no feedback yet.
+  if (total === 0) {
+    return(
+      <p>No feedback given.</p>
+    )
+  }
+
+  // Display when feedback exists
   return (
     <>
       <h1>Statistics</h1>
