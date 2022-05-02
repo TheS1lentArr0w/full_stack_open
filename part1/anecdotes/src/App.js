@@ -13,18 +13,28 @@ const App = () => {
    
   const [selected, setSelected] = useState(0)
 
+  const handleClick = () => {
+    setSelected(getRandomInt(anecdotes.length))
+  }
+
+  
   return (
     <div>
-      {anecdotes[selected]}
-      <div>{8}</div>
+      <div>{anecdotes[selected]}</div>
+      <Button handleClick={handleClick} text="Randomise" />
     </div>
   )
 }
 
-// Issue here, can't figure it out yet
-const getRandomInt = ({max}) => {
+const Button = (props) => (
+  <button onClick={props.handleClick}>
+    {props.text}
+  </button>
+)
+
+function getRandomInt(max){
   const rand_int = Math.floor(Math.random() * max)
-  return(
+  return (
     rand_int
   )
 }
