@@ -12,16 +12,22 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+  const [points, setPoints] = useState({
+    0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0
+  })
 
-  const handleClick = () => {
+  const handleRandomise = () => {
     setSelected(getRandomInt(anecdotes.length))
   }
 
+  const handleVote = () => setPoints({ ...points, [selected]: points[selected] + 1})
   
   return (
     <div>
       <div>{anecdotes[selected]}</div>
-      <Button handleClick={handleClick} text="Randomise" />
+      <DisplayVotes value={points[selected]} />
+      <Button handleClick={handleRandomise} text="Randomise" />
+      <Button handleClick={handleVote} text="Vote" />
     </div>
   )
 }
@@ -31,6 +37,12 @@ const Button = (props) => (
     {props.text}
   </button>
 )
+
+const DisplayVotes = (props) => {
+  return (
+    <div>has {props.value} votes.</div>
+  )
+}
 
 function getRandomInt(max){
   const rand_int = Math.floor(Math.random() * max)
