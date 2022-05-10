@@ -15,23 +15,12 @@ const App = () => {
   const [points, setPoints] = useState({
     0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0
   })
-  const [largest, setLargest] = useState({
-    K: 0, V: 0
-  })
+
 
 
   const handleRandomise = () => setSelected(getRandomInt(anecdotes.length))
 
-  const handleVote = () => {
-    setPoints({ ...points, [selected]: points[selected] + 1})
-    for (const [key, value] of Object.entries(points)) {
-      if (value > largest.V) {
-        const keyInt = parseInt(key)
-        setLargest( { K: keyInt, V: value} )
-      }
-    }
-    console.log(largest)
-  }
+  const handleVote = () => setPoints({ ...points, [selected]: points[selected] + 1})
   
   return (
     <div>
@@ -40,8 +29,7 @@ const App = () => {
       <DisplayVotes value={points[selected]} />
       <Button handleClick={handleRandomise} text="Randomise" />
       <Button handleClick={handleVote} text="Vote" />
-      {typeof points}
-      <DisplayMostVoted largest={largest} points={points} anecdotes={anecdotes} />
+      <DisplayMostVoted points={points} anecdotes={anecdotes} />
     </div>
   )
 }
@@ -62,14 +50,28 @@ const DisplayVotes = (props) => {
 
 // Issue with this, anecdote with most votes displays most votes - 1
 const DisplayMostVoted = (props) => {
+  const [largest, setLargest] = useState({
+    K: 0, V: 0
+  })
+  const points = props.points
+  const anecdotes = props.anecdotes
+
+  for (const [key, value] of Object.entries(points)) {
+    if (value > largest.V) {
+      const keyInt = parseInt(key)
+      setLargest( { K: keyInt, V: value } )
+    }
+  }
+
   return (
     <>
       <h1>Anecdote with most votes</h1>
-      <div>{props.anecdotes[props.largest.K]}</div>
-      <div>has {props.largest.V} votes</div>
+      <div>{anecdotes[largest.K]}</div>
+      <div>has {largest.V} votes</div>
     </>
   )
 }
+
 
 function getRandomInt(max){
   const rand_int = Math.floor(Math.random() * max)
