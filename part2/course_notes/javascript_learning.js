@@ -55,7 +55,6 @@ let orders = [
     { amount: 100 },
     { amount: 325 },
 ]
-// needs debugging to include arrow functions
 
 let totalAmount = orders.reduce( (sum, order) => {
     console.log("hello", sum, order);
