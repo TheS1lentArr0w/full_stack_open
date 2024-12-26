@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import isEqual from 'lodash';
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -10,6 +11,9 @@ const App = () => {
 
   const addName = (event) => {
     event.preventDefault()
+//    persons.forEach( (value) => {
+//            
+//        })
     const nameObject = {
       name: newName,
       key: newName
@@ -22,6 +26,18 @@ const App = () => {
   const handleFormChange = (event) => {
     setNewName(event.target.value)
   }
+
+  var example1 = { 
+    name: 'Example 1',
+    key: 'Example 1'
+   }
+  var example2 = { 
+    name: 'Example 1',
+    key: 'Example 2'
+   }
+  console.log(example1);
+  console.log(example2);
+  console.log(isEqual(example1, example2));
 
   return (
     <div>
