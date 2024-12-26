@@ -1,3 +1,8 @@
+# Preliminary
+Project uses Vite
+- To run project, use `npm run dev`
+    - To share it on network, use `npm run dev -- --host`
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
